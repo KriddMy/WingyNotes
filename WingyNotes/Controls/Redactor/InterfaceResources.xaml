@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="ToolbarBackgroundColor" Color="#f8f7fb" />
+    <SolidColorBrush x:Key="TextInputBackgroundColor" Color="#e4e4f2" />
+
+    <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+            </Trigger>
+            <!--<Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" TargetName="border" Value="Yellow"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+            </Trigger>-->
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="InputTextField" TargetType="RichTextBox">
+        <Setter Property="AcceptsTab" Value="True" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="Background" Value="{StaticResource TextInputBackgroundColor}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="IsInactiveSelectionHighlightEnabled" Value="False" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="Template" Value="{StaticResource TextBoxBaseControlTemplate}"/>
+    </Style>
+    
+</ResourceDictionary>
